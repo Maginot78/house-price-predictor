@@ -28,3 +28,16 @@ jobs:
 #      - name: Run tests # (O el siguiente paso que estabas escribiendo)
 #        run: |
 #          pytest
+
+      - name: Run Data Processing
+        run: |
+          python src/data/data_processing.py \
+            --input_path data/raw/house_data.csv \
+            --output_path data/processed/cleaned_house_data.csv
+      
+      - name: Do Feature Engineering
+        run: |
+          python src/features/engineering.py \
+            --input_path data/processed/cleaned_house_data.csv \
+            --output_path data/processed/featured_house_data.csv \
+            --preprocessor models/trained/preprocessor.pkl
