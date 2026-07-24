@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  # Servicio 1: API de FastAPI
+  model:
+    container_name: model
+    image: localhost/fastapi:latest
+    ports:
+      - "8000:8000"
+    restart: always
+
+  # Servicio 2: Frontend de Streamlit
+  streamlit:
+    container_name: streamlit
+    image: localhost/maginot78/streamlit:v1
+    ports:
+      - "8501:8501"
+    depends_on:
+      - model
+    restart: always
