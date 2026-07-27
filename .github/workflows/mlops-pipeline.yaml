@@ -1,4 +1,4 @@
-name: MLops CI
+name: MLops PIpeline
 
 on:
   workflow_dispatch:
